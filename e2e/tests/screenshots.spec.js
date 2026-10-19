@@ -4,7 +4,7 @@ import { mkdtempSync, readFileSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import {
-  ADMIN_API_KEY, USERS, linkPullRequests, login, panel, pullRequestPayload, resetMockApi, sendWebhook,
+  ADMIN_API_KEY, USERS, linkPullRequests, login, panel, resetMockApi,
 } from './helpers.js'
 
 // Captures the images used in the README: npm run screenshots
@@ -175,32 +175,6 @@ test('issue page and feature screenshots', async ({ page, request, browser }) =>
   await page.mouse.move(0, 0)
   await shoot(page, panel(page), join(tmp, 'details.png'))
   await frame(browser, join(tmp, 'details.png'), `${DOCS}details.png`, { chrome: false, padding: 40 })
-
-  // Linking by URL
-  await panel(page).getByRole('link', { name: 'Link pull request', exact: true }).click()
-  await page.locator('#pull_request_url').fill(`${PRS.gitlab12} ${PRS.github108}`)
-  await page.mouse.move(0, 0)
-  await shoot(page, panel(page), join(tmp, 'link.png'))
-  await frame(browser, join(tmp, 'link.png'), `${DOCS}link.png`, { chrome: false, padding: 40 })
-
-  // Fixing keyword: the merged pull request resolved the issue
-  const fixed = await createShowcaseIssue(request, 'Password reset e-mails are not sent', 'Users never receive the reset link.')
-  const options = {
-    number: 950, title: 'Send password reset e-mails through the mail queue',
-    body: `Fixes #${fixed.id}`, branch: 'fix/password-reset-mails',
-  }
-  await sendWebhook(request, pullRequestPayload('opened', options))
-  await sendWebhook(request, pullRequestPayload('closed', { ...options, state: 'closed', merged: true }))
-  await page.goto(`/issues/${fixed.id}`)
-  await page.addStyleTag({ content: '.pull-requests-hook > hr { visibility: hidden; }' })
-  await page.mouse.move(0, 0)
-  const attributes = await page.locator('.issue .attributes').boundingBox()
-  const journal = await page.locator('#history .journal').first().boundingBox()
-  await page.screenshot({
-    path: join(tmp, 'webhook.png'),
-    clip: { x: attributes.x - 16, y: attributes.y - 12, width: attributes.width + 32, height: journal.y + journal.height + 12 - attributes.y },
-  })
-  await frame(browser, join(tmp, 'webhook.png'), `${DOCS}webhook.png`, { chrome: false, padding: 40 })
 
   rmSync(tmp, { recursive: true })
 })
