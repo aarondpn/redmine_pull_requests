@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1
+
+- Simplified Chinese: open pull requests are shown as 已开启, the opening time as 创建
+- Unknown authors start with a capital letter in English, Polish and Russian
+- README screenshots in Spanish, Japanese and Simplified Chinese
+
 ## 1.1.0
 
 - French, Spanish, Japanese, Simplified Chinese, Polish and Russian translations

@@ -4,7 +4,7 @@ Redmine::Plugin.register :redmine_pull_requests do
   name 'Pull Requests'
   author 'Aaron Döppner'
   description 'Link GitHub pull requests and GitLab merge requests to Redmine issues and keep their state in sync.'
-  version '1.1.0'
+  version '1.1.1'
   url 'https://github.com/aarondpn/redmine_pull_requests'
   requires_redmine version_or_higher: '5.0.0'
 
