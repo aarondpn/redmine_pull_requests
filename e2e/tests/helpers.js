@@ -153,11 +153,12 @@ export function panel(page) {
 
 export async function linkPullRequests(page, urls) {
   const form = page.locator('#new-pull-request-form')
-  if (!(await form.isVisible())) await panel(page).getByRole('link', { name: 'Link pull request', exact: true }).click()
+  // by data attribute and type, the screenshots are also taken in other languages
+  if (!(await form.isVisible())) await panel(page).locator('[data-pr-link-toggle]').click()
   await page.locator('#pull_request_url').fill(urls.join(' '))
   await Promise.all([
     page.waitForResponse((r) => r.request().method() === 'POST' && r.url().endsWith('/pull_requests')),
-    form.getByRole('button', { name: 'Link' }).click(),
+    form.locator('[type="submit"]').click(),
   ])
 }
 

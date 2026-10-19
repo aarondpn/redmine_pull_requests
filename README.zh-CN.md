@@ -33,7 +33,7 @@
   <a href="API.md">REST API</a>
 </p>
 
-![Redmine 问题上的拉取请求](docs/hero.png)
+![Redmine 问题上的拉取请求](docs/zh-CN/hero.png)
 
 ## 功能
 
@@ -45,12 +45,12 @@
 - **按项目设置允许的仓库**，关联只会作用于信任该仓库的项目
 - **[REST API](API.md)**（英文），按角色分配权限，已翻译为 8 种语言
 
-![关联拉取请求并展开详情](docs/demo.gif)
+![关联拉取请求并展开详情](docs/zh-CN/demo.gif)
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/details.png" alt="显示审查者、审查结论、检查、评论和未解决讨论的拉取请求"></td>
-    <td width="50%"><img src="docs/compact.png" alt="包含 GitHub 拉取请求和一个 GitLab 合并请求的紧凑列表"></td>
+    <td width="50%"><img src="docs/zh-CN/details.png" alt="显示审查者、审查结论、检查、评论和未解决讨论的拉取请求"></td>
+    <td width="50%"><img src="docs/zh-CN/compact.png" alt="包含 GitHub 拉取请求和一个 GitLab 合并请求的紧凑列表"></td>
   </tr>
 </table>
 

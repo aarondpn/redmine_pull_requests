@@ -33,7 +33,7 @@
   <a href="API.md">REST API</a>
 </p>
 
-![Redmine のチケットに表示されたプルリクエスト](docs/hero.png)
+![Redmine のチケットに表示されたプルリクエスト](docs/ja/hero.png)
 
 ## 機能
 
@@ -45,12 +45,12 @@
 - **プロジェクトごとの許可リポジトリ**: 関連付けは、そのリポジトリを信頼するプロジェクトにだけ届きます
 - **[REST API](API.md)**(英語)、ロールごとの権限設定、8 言語に翻訳済み
 
-![プルリクエストを関連付けて詳細を展開する様子](docs/demo.gif)
+![プルリクエストを関連付けて詳細を展開する様子](docs/ja/demo.gif)
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/details.png" alt="レビュアー、レビュー結果、チェック、コメント、未解決のスレッドが表示されたプルリクエスト"></td>
-    <td width="50%"><img src="docs/compact.png" alt="GitHub のプルリクエストと GitLab のマージリクエストが並ぶコンパクトなリスト"></td>
+    <td width="50%"><img src="docs/ja/details.png" alt="レビュアー、レビュー結果、チェック、コメント、未解決のスレッドが表示されたプルリクエスト"></td>
+    <td width="50%"><img src="docs/ja/compact.png" alt="GitHub のプルリクエストと GitLab のマージリクエストが並ぶコンパクトなリスト"></td>
   </tr>
 </table>
 

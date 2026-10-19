@@ -49,6 +49,9 @@ end
 developer = user('dev', 'Dana')
 reporter = user('reporter', 'Remy')
 manager = user('manager', 'Mia')
+# The tests look for English labels, a language set by hand or by an
+# interrupted screenshot run would break them
+[admin, developer, reporter, manager].each { |u| u.update_column(:language, '') }
 
 def project(identifier, name, modules)
   Project.find_by(identifier: identifier) || Project.new.tap do |p|

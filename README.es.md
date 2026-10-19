@@ -33,7 +33,7 @@
   <a href="API.md">API REST</a>
 </p>
 
-![Pull requests en una petición de Redmine](docs/hero.png)
+![Pull requests en una petición de Redmine](docs/es/hero.png)
 
 ## Funcionalidades
 
@@ -45,12 +45,12 @@
 - **Repositorios permitidos por proyecto**, para que los vínculos solo lleguen a los proyectos que confían en un repositorio
 - **[API REST](API.md)** (en inglés), permisos por perfil, traducido a 8 idiomas
 
-![Vinculación de pull requests y despliegue de los detalles](docs/demo.gif)
+![Vinculación de pull requests y despliegue de los detalles](docs/es/demo.gif)
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/details.png" alt="Un pull request con revisores, decisión de revisión, comprobaciones, comentarios e hilos sin resolver"></td>
-    <td width="50%"><img src="docs/compact.png" alt="Lista compacta con pull requests de GitHub y un merge request de GitLab"></td>
+    <td width="50%"><img src="docs/es/details.png" alt="Un pull request con revisores, decisión de revisión, comprobaciones, comentarios e hilos sin resolver"></td>
+    <td width="50%"><img src="docs/es/compact.png" alt="Lista compacta con pull requests de GitHub y un merge request de GitLab"></td>
   </tr>
 </table>
 
