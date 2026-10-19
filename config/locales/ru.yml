@@ -1,0 +1,124 @@
+ru:
+  project_module_pull_requests: Запросы на слияние
+  permission_view_pull_requests: Просмотр запросов на слияние
+  permission_manage_pull_requests: Управление запросами на слияние
+
+  label_pull_request_plural: Запросы на слияние
+  label_pull_request_link: Связать запрос на слияние
+  label_pull_request_url: URL запроса на слияние
+  label_pull_request_linking: Связывание…
+  label_pull_request_refresh: "Обновить из %{provider}"
+  label_pull_request_unlink: Отвязать запрос на слияние
+  label_pull_request_unknown_author: кто-то
+  label_pull_request_status_open: Открыт
+  label_pull_request_status_draft: Черновик
+  label_pull_request_status_merged: Слит
+  label_pull_request_status_closed: Закрыт
+  label_pull_request_status_count: "%{status}: %{count}"
+  label_pull_request_time_ago: "%{age} назад"
+  label_pull_request_opened_time_ago: "открыт %{age} назад"
+  label_pull_request_changes: изменения
+  label_pull_request_commits:
+    one: "1 коммит"
+    few: "%{count} коммита"
+    many: "%{count} коммитов"
+    other: "коммиты (%{count})"
+  label_pull_request_diff_title:
+    one: "Изменён 1 файл"
+    few: "Изменено %{count} файла"
+    many: "Изменено %{count} файлов"
+    other: "Изменено файлов: %{count}"
+  label_pull_request_settings_linking: Связывание
+  label_pull_request_view_compact: Компактный вид
+  label_pull_request_view_expanded: Развернуть все
+  label_pull_request_show_details: "Показать подробности для %{reference}"
+  label_pull_request_hide_details: "Скрыть подробности для %{reference}"
+  label_pull_request_reviewers: Рецензенты
+  label_pull_request_reviewer_approved: "%{user} одобрил(а) эти изменения"
+  label_pull_request_reviewer_changes_requested: "%{user} запросил(а) изменения"
+  label_pull_request_reviewer_commented: "%{user} прокомментировал(а) изменения"
+  label_pull_request_reviewer_pending: "Ожидается рецензия от %{user}"
+  label_pull_request_review_approved: Одобрено
+  label_pull_request_review_changes_requested: Запрошены изменения
+  label_pull_request_review_review_required: Требуется рецензия
+  label_pull_request_checks_passed:
+    one: "1 проверка пройдена"
+    few: "%{count} проверки пройдены"
+    many: "%{count} проверок пройдено"
+    other: "Пройдено проверок: %{count}"
+  label_pull_request_checks_failing:
+    one: "1 проверка не пройдена"
+    few: "%{count} проверки не пройдены"
+    many: "%{count} проверок не пройдено"
+    other: "Не пройдено проверок: %{count}"
+  label_pull_request_checks_progress: "Пройдено проверок: %{passed}/%{total}"
+  label_pull_request_checks_title: "Успешно: %{passed}, с ошибками: %{failed}, выполняется: %{pending}"
+  label_pull_request_pipeline_success: Конвейер выполнен успешно
+  label_pull_request_pipeline_failure: Конвейер завершился с ошибкой
+  label_pull_request_pipeline_pending: Конвейер выполняется
+  label_pull_request_pipeline_neutral: Конвейер отменён
+  label_pull_request_comments:
+    one: "1 комментарий"
+    few: "%{count} комментария"
+    many: "%{count} комментариев"
+    other: "Комментариев: %{count}"
+  label_pull_request_unresolved_threads:
+    one: "1 нерешённое обсуждение"
+    few: "%{count} нерешённых обсуждения"
+    many: "%{count} нерешённых обсуждений"
+    other: "Нерешённых обсуждений: %{count}"
+
+  button_pull_request_link: Связать
+
+  text_pull_request_open: "%{user} хочет слить %{commits} из %{head} в %{base} · %{age}"
+  text_pull_request_merged: "%{user} слил(а) %{commits} из %{head} в %{base} %{age}"
+  text_pull_request_closed: "Запрос на слияние от %{user} закрыт %{age} без слияния"
+  text_merge_request_closed: "Запрос на слияние от %{user} закрыт %{age} без слияния"
+  text_pull_request_closed_unknown_author: "Запрос на слияние закрыт %{age} без слияния"
+  text_merge_request_closed_unknown_author: "Запрос на слияние закрыт %{age} без слияния"
+  text_pull_requests_empty: Связанных запросов на слияние пока нет. Свяжите запрос по URL или сошлитесь на эту задачу в запросе на слияние.
+  text_pull_request_url_placeholder: URL запроса на слияние в GitHub или GitLab
+  text_pull_request_link_hint: Вставьте один или несколько URL запросов на слияние из GitHub или GitLab через пробел или запятую.
+  text_status_changed_by_pull_request: "Реализовано в запросе на слияние %{value}."
+  text_status_changed_by_merge_request: "Реализовано в запросе на слияние %{value}."
+
+  error_pull_request_url_blank: Введите URL запроса на слияние.
+  error_pull_request_invalid_url: "%{url} не является URL запроса на слияние в GitHub или GitLab."
+  error_pull_request_fetch_failed: "Не удалось загрузить %{reference} из %{provider} (%{message})."
+
+  setting_pull_request_web_url: "URL %{provider}"
+  setting_pull_request_api_url: URL API
+  setting_pull_request_token: Токен доступа
+  setting_pull_request_webhook_url: URL вебхука
+  setting_pull_request_webhook_secret: Секрет вебхука
+  setting_pull_request_link_bare_refs: "Связывать простые ссылки вида #123"
+  setting_pull_request_link_branch_refs: Связывать по имени ветки
+  setting_pull_request_apply_fix_keywords: Применять ключевые слова изменения статуса при слиянии
+
+  text_pull_request_github_web_url: "Для GitHub Enterprise, например https://github.example.com"
+  text_pull_request_github_api_url: "https://api.github.com или https://github.example.com/api/v3"
+  text_pull_request_github_token: "Детализированный токен (fine-grained) с правом чтения запросов на слияние и статусов коммитов или классический токен с областью repo, который также может читать запуски проверок (check runs) приватных репозиториев. Необходим для приватных репозиториев, для нерешённых обсуждений и для обновления рецензий и проверок по вебхукам. Также можно задать через %{env}."
+  text_pull_request_github_webhook_url: "Добавьте в репозиторий или организацию вебхук с типом содержимого application/json. События: Pull requests, Pull request reviews, Pull request review comments, Pull request review threads, Issue comments, Check runs, Check suites и Statuses."
+  text_pull_request_gitlab_web_url: "Для собственного экземпляра GitLab (self-managed), например https://gitlab.example.com"
+  text_pull_request_gitlab_api_url: "https://gitlab.com/api/v4 или https://gitlab.example.com/api/v4"
+  text_pull_request_gitlab_token: "Токен с областью read_api. Необходим для приватных проектов и для загрузки числа коммитов, авторов, рецензий и конвейеров при событиях вебхука. Также можно задать через %{env}."
+  text_pull_request_gitlab_webhook_url: "Добавьте в проект (или в группу — в GitLab Premium и Ultimate) вебхук с триггерами «Merge request events», «Comments» и «Pipeline events» и укажите секрет вебхука в поле «Secret token»."
+  text_pull_request_webhook_secret: "Необходим для вебхука. Также можно задать через %{env}."
+  text_pull_request_link_bare_refs: "Иначе связываются только ссылки с ключевым словом (%{keywords})."
+  text_pull_request_link_branch_refs: "Например: 123-login-page, feature/123-login-page или issue-123"
+  text_pull_request_apply_fix_keywords: "Когда запрос на слияние со ссылкой «fixes #123» сливается, задача обновляется так же, как при коммите. См. «%{link}» на вкладке «Хранилища» в настройках."
+
+  # Repository allow-list, limits and stored secrets
+  permission_manage_pull_request_settings: Управление настройками запросов на слияние
+  label_pull_request_allowed_repositories: Разрешённые репозитории
+  label_pull_request_configure_repositories: Настроить репозитории
+  label_pull_request_remove_secret: Удалить
+  text_pull_request_allowed_repositories: "Запросы на слияние из этих репозиториев можно связывать с задачами этого проекта — через вебхук или вручную. Вебхуки из других репозиториев для этого проекта игнорируются."
+  text_pull_request_allowed_repositories_syntax: "По одному шаблону в строке: owner/repo, owner/* (все репозитории owner), group/** (включая подгруппы). С префиксом github: или gitlab: шаблон действует только для этого сервиса. Строки, начинающиеся с #, игнорируются."
+  text_pull_request_no_repositories_allowed: В этом проекте пока нет разрешённых репозиториев, поэтому связывать запросы на слияние нельзя.
+  text_pull_request_no_repositories_allowed_ask: В этом проекте пока нет разрешённых репозиториев, поэтому связывать запросы на слияние нельзя. Менеджер проекта может разрешить их в настройках проекта.
+  text_pull_request_secret_stored: Значение сохранено. Оставьте поле пустым, чтобы не изменять его.
+  error_pull_request_repository_not_allowed: "Репозиторий %{repository} не разрешён в этом проекте (Настройки › Запросы на слияние)."
+  error_pull_request_no_repositories_allowed: "В этом проекте пока нет разрешённых репозиториев (Настройки › Запросы на слияние)."
+  error_pull_request_too_many_urls: "Максимальное количество запросов на слияние, связываемых за один раз: %{count}."
+  error_pull_request_invalid_repository_pattern: "Строка %{line}: «%{pattern}» не является допустимым шаблоном репозитория."

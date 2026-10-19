@@ -1,0 +1,112 @@
+es:
+  project_module_pull_requests: Pull requests
+  permission_view_pull_requests: Ver pull requests
+  permission_manage_pull_requests: Administrar pull requests
+
+  label_pull_request_plural: Pull requests
+  label_pull_request_link: Vincular pull request
+  label_pull_request_url: URL del pull request
+  label_pull_request_linking: Vinculando…
+  label_pull_request_refresh: "Actualizar desde %{provider}"
+  label_pull_request_unlink: Desvincular pull request
+  label_pull_request_unknown_author: Alguien
+  label_pull_request_status_open: Abierto
+  label_pull_request_status_draft: Borrador
+  label_pull_request_status_merged: Fusionado
+  label_pull_request_status_closed: Cerrado
+  label_pull_request_status_count: "%{status}: %{count}"
+  label_pull_request_time_ago: "hace %{age}"
+  label_pull_request_opened_time_ago: "abierto hace %{age}"
+  label_pull_request_changes: cambios
+  label_pull_request_commits:
+    one: "1 commit"
+    other: "%{count} commits"
+  label_pull_request_diff_title:
+    one: "1 archivo modificado"
+    other: "%{count} archivos modificados"
+  label_pull_request_settings_linking: Vinculación
+  label_pull_request_view_compact: Vista compacta
+  label_pull_request_view_expanded: Expandir todo
+  label_pull_request_show_details: "Mostrar detalles de %{reference}"
+  label_pull_request_hide_details: "Ocultar detalles de %{reference}"
+  label_pull_request_reviewers: Revisores
+  label_pull_request_reviewer_approved: "%{user} aprobó estos cambios"
+  label_pull_request_reviewer_changes_requested: "%{user} solicitó cambios"
+  label_pull_request_reviewer_commented: "%{user} dejó comentarios de revisión"
+  label_pull_request_reviewer_pending: "Esperando la revisión de %{user}"
+  label_pull_request_review_approved: Aprobado
+  label_pull_request_review_changes_requested: Cambios solicitados
+  label_pull_request_review_review_required: Revisión requerida
+  label_pull_request_checks_passed:
+    one: "1 comprobación superada"
+    other: "%{count} comprobaciones superadas"
+  label_pull_request_checks_failing:
+    one: "1 comprobación fallida"
+    other: "%{count} comprobaciones fallidas"
+  label_pull_request_checks_progress: "%{passed}/%{total} comprobaciones superadas"
+  label_pull_request_checks_title: "Superadas: %{passed}, fallidas: %{failed}, en curso: %{pending}"
+  label_pull_request_pipeline_success: Pipeline superado
+  label_pull_request_pipeline_failure: Pipeline fallido
+  label_pull_request_pipeline_pending: Pipeline en ejecución
+  label_pull_request_pipeline_neutral: Pipeline cancelado
+  label_pull_request_comments:
+    one: "1 comentario"
+    other: "%{count} comentarios"
+  label_pull_request_unresolved_threads:
+    one: "1 hilo sin resolver"
+    other: "%{count} hilos sin resolver"
+
+  button_pull_request_link: Vincular
+
+  text_pull_request_open: "%{user} quiere fusionar %{commits} de %{head} en %{base} · %{age}"
+  text_pull_request_merged: "%{user} fusionó %{commits} de %{head} en %{base} %{age}"
+  text_pull_request_closed: "El pull request de %{user} se cerró %{age} sin fusionarse"
+  text_merge_request_closed: "El merge request de %{user} se cerró %{age} sin fusionarse"
+  text_pull_request_closed_unknown_author: "El pull request se cerró %{age} sin fusionarse"
+  text_merge_request_closed_unknown_author: "El merge request se cerró %{age} sin fusionarse"
+  text_pull_requests_empty: Todavía no hay pull requests vinculados. Vincule uno mediante su URL o haga referencia a esta petición en un pull request.
+  text_pull_request_url_placeholder: URL de un pull request de GitHub o de un merge request de GitLab
+  text_pull_request_link_hint: Pegue una o varias URL de pull requests de GitHub o merge requests de GitLab, separadas por espacios o comas.
+  text_status_changed_by_pull_request: "Aplicado en el pull request %{value}."
+  text_status_changed_by_merge_request: "Aplicado en el merge request %{value}."
+
+  error_pull_request_url_blank: Introduzca la URL de un pull request.
+  error_pull_request_invalid_url: "%{url} no es una URL de pull request de GitHub ni de merge request de GitLab."
+  error_pull_request_fetch_failed: "No se pudo cargar %{reference} desde %{provider} (%{message})."
+
+  setting_pull_request_web_url: "URL de %{provider}"
+  setting_pull_request_api_url: URL de la API
+  setting_pull_request_token: Token de acceso
+  setting_pull_request_webhook_url: URL del webhook
+  setting_pull_request_webhook_secret: Secreto del webhook
+  setting_pull_request_link_bare_refs: "Vincular referencias #123 sin palabra clave"
+  setting_pull_request_link_branch_refs: Vincular por nombre de rama
+  setting_pull_request_apply_fix_keywords: Aplicar las palabras clave para la corrección al fusionar
+
+  text_pull_request_github_web_url: "Para GitHub Enterprise, p. ej. https://github.example.com"
+  text_pull_request_github_api_url: "https://api.github.com o https://github.example.com/api/v3"
+  text_pull_request_github_token: "Token fine-grained con acceso de lectura a pull requests y estados de commit, o un token clásico con el ámbito repo, que además puede leer las ejecuciones de comprobaciones (check runs) de repositorios privados. Necesario para repositorios privados, para los hilos de revisión sin resolver y para actualizar revisiones y comprobaciones desde webhooks. También se puede definir con %{env}."
+  text_pull_request_github_webhook_url: "Añada a su repositorio u organización un webhook con el tipo de contenido application/json. Eventos: Pull requests, Pull request reviews, Pull request review comments, Pull request review threads, Issue comments, Check runs, Check suites y Statuses."
+  text_pull_request_gitlab_web_url: "Para GitLab autogestionado, p. ej. https://gitlab.example.com"
+  text_pull_request_gitlab_api_url: "https://gitlab.com/api/v4 o https://gitlab.example.com/api/v4"
+  text_pull_request_gitlab_token: "Token con el ámbito read_api. Necesario para proyectos privados y para cargar el número de commits, los autores, las revisiones y los pipelines en los eventos de webhook. También se puede definir con %{env}."
+  text_pull_request_gitlab_webhook_url: "Añada a su proyecto (o grupo, en GitLab Premium y Ultimate) un webhook con los disparadores «Merge request events», «Comments» y «Pipeline events», y use el secreto del webhook como «Secret token»."
+  text_pull_request_webhook_secret: "Necesario para el webhook. También se puede definir con %{env}."
+  text_pull_request_link_bare_refs: "En caso contrario, solo se vinculan las referencias con una palabra clave (%{keywords})."
+  text_pull_request_link_branch_refs: "p. ej. 123-pagina-login, feature/123-pagina-login o issue-123"
+  text_pull_request_apply_fix_keywords: "Al fusionar un pull request que contiene «fixes #123», la petición se actualiza igual que con un commit. Consulte %{link} en la configuración de repositorios."
+
+  # Repository allow-list, limits and stored secrets
+  permission_manage_pull_request_settings: Administrar la configuración de pull requests
+  label_pull_request_allowed_repositories: Repositorios permitidos
+  label_pull_request_configure_repositories: Configurar repositorios
+  label_pull_request_remove_secret: Eliminar
+  text_pull_request_allowed_repositories: "Los pull requests de estos repositorios se pueden vincular a peticiones de este proyecto, mediante webhook o manualmente. Los webhooks de otros repositorios se ignoran en este proyecto."
+  text_pull_request_allowed_repositories_syntax: "Uno por línea: owner/repo, owner/* (todos los repositorios de owner), group/** (incluidos los subgrupos). Anteponga github: o gitlab: para permitir solo uno de los dos. Las líneas que empiezan por # se ignoran."
+  text_pull_request_no_repositories_allowed: Todavía no hay repositorios permitidos en este proyecto, por lo que no se pueden vincular pull requests.
+  text_pull_request_no_repositories_allowed_ask: Todavía no hay repositorios permitidos en este proyecto, por lo que no se pueden vincular pull requests. Un jefe de proyecto puede permitirlos en Configuración › Pull requests.
+  text_pull_request_secret_stored: Hay un valor guardado. Déjelo en blanco para conservarlo.
+  error_pull_request_repository_not_allowed: "%{repository} no está permitido en este proyecto (Configuración › Pull requests)."
+  error_pull_request_no_repositories_allowed: "Todavía no hay repositorios permitidos en este proyecto (Configuración › Pull requests)."
+  error_pull_request_too_many_urls: "Vincule como máximo %{count} pull requests a la vez."
+  error_pull_request_invalid_repository_pattern: "Línea %{line}: «%{pattern}» no es un patrón de repositorio válido."

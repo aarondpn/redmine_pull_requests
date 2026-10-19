@@ -1,0 +1,124 @@
+pl:
+  project_module_pull_requests: Pull requesty
+  permission_view_pull_requests: Przeglądanie pull requestów
+  permission_manage_pull_requests: Zarządzanie pull requestami
+
+  label_pull_request_plural: Pull requesty
+  label_pull_request_link: Powiąż pull request
+  label_pull_request_url: URL pull requesta
+  label_pull_request_linking: Powiązywanie…
+  label_pull_request_refresh: "Odśwież z serwisu %{provider}"
+  label_pull_request_unlink: Usuń powiązanie
+  label_pull_request_unknown_author: ktoś
+  label_pull_request_status_open: Otwarty
+  label_pull_request_status_draft: Szkic
+  label_pull_request_status_merged: Scalony
+  label_pull_request_status_closed: Zamknięty
+  label_pull_request_status_count: "%{status}: %{count}"
+  label_pull_request_time_ago: "%{age} temu"
+  label_pull_request_opened_time_ago: "otwarto %{age} temu"
+  label_pull_request_changes: zmiany
+  label_pull_request_commits:
+    one: "1 commit"
+    few: "%{count} commity"
+    many: "%{count} commitów"
+    other: "zmiany z %{count} commitów"
+  label_pull_request_diff_title:
+    one: "1 zmieniony plik"
+    few: "%{count} zmienione pliki"
+    many: "%{count} zmienionych plików"
+    other: "Zmienione pliki: %{count}"
+  label_pull_request_settings_linking: Powiązywanie
+  label_pull_request_view_compact: Widok kompaktowy
+  label_pull_request_view_expanded: Rozwiń wszystkie
+  label_pull_request_show_details: "Pokaż szczegóły %{reference}"
+  label_pull_request_hide_details: "Ukryj szczegóły %{reference}"
+  label_pull_request_reviewers: Recenzenci
+  label_pull_request_reviewer_approved: "%{user} zatwierdził(a) te zmiany"
+  label_pull_request_reviewer_changes_requested: "%{user} poprosił(a) o zmiany"
+  label_pull_request_reviewer_commented: "%{user} dodał(a) komentarze w recenzji"
+  label_pull_request_reviewer_pending: "Oczekiwanie na recenzję: %{user}"
+  label_pull_request_review_approved: Zatwierdzono
+  label_pull_request_review_changes_requested: Poproszono o zmiany
+  label_pull_request_review_review_required: Wymagana recenzja
+  label_pull_request_checks_passed:
+    one: "1 udana kontrola"
+    few: "%{count} udane kontrole"
+    many: "%{count} udanych kontroli"
+    other: "Udane kontrole: %{count}"
+  label_pull_request_checks_failing:
+    one: "1 nieudana kontrola"
+    few: "%{count} nieudane kontrole"
+    many: "%{count} nieudanych kontroli"
+    other: "Nieudane kontrole: %{count}"
+  label_pull_request_checks_progress: "Udane kontrole: %{passed}/%{total}"
+  label_pull_request_checks_title: "Udane: %{passed}, nieudane: %{failed}, w toku: %{pending}"
+  label_pull_request_pipeline_success: Pipeline zakończony sukcesem
+  label_pull_request_pipeline_failure: Pipeline zakończony niepowodzeniem
+  label_pull_request_pipeline_pending: Pipeline w toku
+  label_pull_request_pipeline_neutral: Pipeline anulowany
+  label_pull_request_comments:
+    one: "1 komentarz"
+    few: "%{count} komentarze"
+    many: "%{count} komentarzy"
+    other: "Komentarze: %{count}"
+  label_pull_request_unresolved_threads:
+    one: "1 nierozwiązany wątek"
+    few: "%{count} nierozwiązane wątki"
+    many: "%{count} nierozwiązanych wątków"
+    other: "Nierozwiązane wątki: %{count}"
+
+  button_pull_request_link: Powiąż
+
+  text_pull_request_open: "%{user} chce scalić %{commits} z %{head} do %{base} · %{age}"
+  text_pull_request_merged: "%{user} scalił(a) %{commits} z %{head} do %{base} %{age}"
+  text_pull_request_closed: "Pull request użytkownika %{user} został zamknięty bez scalenia %{age}"
+  text_merge_request_closed: "Merge request użytkownika %{user} został zamknięty bez scalenia %{age}"
+  text_pull_request_closed_unknown_author: "Pull request został zamknięty bez scalenia %{age}"
+  text_merge_request_closed_unknown_author: "Merge request został zamknięty bez scalenia %{age}"
+  text_pull_requests_empty: Nie powiązano jeszcze żadnych pull requestów. Powiąż pull request przez URL lub odwołaj się do tego zagadnienia w pull requeście.
+  text_pull_request_url_placeholder: URL pull requesta GitHub lub merge requesta GitLab
+  text_pull_request_link_hint: Wklej jeden lub kilka adresów URL pull requestów GitHub lub merge requestów GitLab, oddzielając je spacjami lub przecinkami.
+  text_status_changed_by_pull_request: "Zastosowane w pull requeście %{value}."
+  text_status_changed_by_merge_request: "Zastosowane w merge requeście %{value}."
+
+  error_pull_request_url_blank: Podaj URL pull requesta.
+  error_pull_request_invalid_url: "%{url} nie jest adresem URL pull requesta GitHub ani merge requesta GitLab."
+  error_pull_request_fetch_failed: "Nie udało się wczytać %{reference} z serwisu %{provider} (%{message})."
+
+  setting_pull_request_web_url: "URL %{provider}"
+  setting_pull_request_api_url: URL API
+  setting_pull_request_token: Token dostępu
+  setting_pull_request_webhook_url: URL webhooka
+  setting_pull_request_webhook_secret: Sekret webhooka
+  setting_pull_request_link_bare_refs: "Powiązuj odwołania #123 bez słowa kluczowego"
+  setting_pull_request_link_branch_refs: Powiązuj według nazwy gałęzi
+  setting_pull_request_apply_fix_keywords: Stosuj słowa zmieniające status przy scalaniu
+
+  text_pull_request_github_web_url: "Dla GitHub Enterprise, np. https://github.example.com"
+  text_pull_request_github_api_url: "https://api.github.com lub https://github.example.com/api/v3"
+  text_pull_request_github_token: "Token typu fine-grained z dostępem do odczytu pull requestów i statusów commitów albo klasyczny token z zakresem repo, który może też odczytywać przebiegi kontroli (check runs) prywatnych repozytoriów. Wymagany dla prywatnych repozytoriów, dla nierozwiązanych wątków recenzji oraz do aktualizowania recenzji i kontroli przez webhooki. Można go też ustawić za pomocą %{env}."
+  text_pull_request_github_webhook_url: "Dodaj w repozytorium lub organizacji webhook z typem zawartości application/json. Zdarzenia: Pull requests, Pull request reviews, Pull request review comments, Pull request review threads, Issue comments, Check runs, Check suites i Statuses."
+  text_pull_request_gitlab_web_url: "Dla własnej instancji GitLab (self-managed), np. https://gitlab.example.com"
+  text_pull_request_gitlab_api_url: "https://gitlab.com/api/v4 lub https://gitlab.example.com/api/v4"
+  text_pull_request_gitlab_token: "Token z zakresem read_api. Wymagany dla prywatnych projektów oraz do wczytywania liczby commitów, autorów, recenzji i pipeline'ów przy zdarzeniach webhooka. Można go też ustawić za pomocą %{env}."
+  text_pull_request_gitlab_webhook_url: "Dodaj w projekcie (lub w grupie, w GitLab Premium i Ultimate) webhook z wyzwalaczami „Merge request events”, „Comments” i „Pipeline events”, a sekret webhooka podaj jako „Secret token”."
+  text_pull_request_webhook_secret: "Wymagany dla webhooka. Można go też ustawić za pomocą %{env}."
+  text_pull_request_link_bare_refs: "W przeciwnym razie powiązywane są tylko odwołania poprzedzone słowem kluczowym (%{keywords})."
+  text_pull_request_link_branch_refs: "np. 123-strona-logowania, feature/123-strona-logowania lub issue-123"
+  text_pull_request_apply_fix_keywords: "Gdy zostanie scalony pull request z odwołaniem „fixes #123”, zagadnienie zostanie zaktualizowane tak jak w przypadku commita. Zobacz opcję „%{link}” w ustawieniach (zakładka Repozytoria)."
+
+  # Repository allow-list, limits and stored secrets
+  permission_manage_pull_request_settings: Zarządzanie ustawieniami pull requestów
+  label_pull_request_allowed_repositories: Dozwolone repozytoria
+  label_pull_request_configure_repositories: Konfiguruj repozytoria
+  label_pull_request_remove_secret: Usuń
+  text_pull_request_allowed_repositories: "Pull requesty z tych repozytoriów mogą być powiązywane z zagadnieniami tego projektu przez webhook lub ręcznie. Webhooki z innych repozytoriów są w tym projekcie ignorowane."
+  text_pull_request_allowed_repositories_syntax: "Jeden wzorzec w wierszu: owner/repo, owner/* (wszystkie repozytoria właściciela owner), group/** (łącznie z podgrupami). Dodaj prefiks github: lub gitlab:, aby zezwolić tylko na jeden z tych serwisów. Wiersze zaczynające się od # są ignorowane."
+  text_pull_request_no_repositories_allowed: W tym projekcie nie ma jeszcze dozwolonych repozytoriów, więc nie można powiązywać pull requestów.
+  text_pull_request_no_repositories_allowed_ask: W tym projekcie nie ma jeszcze dozwolonych repozytoriów, więc nie można powiązywać pull requestów. Kierownik projektu może je dodać w ustawieniach projektu (Ustawienia › Pull requesty).
+  text_pull_request_secret_stored: Wartość jest zapisana. Pozostaw puste, aby ją zachować.
+  error_pull_request_repository_not_allowed: "Repozytorium %{repository} nie jest dozwolone w tym projekcie (Ustawienia › Pull requesty)."
+  error_pull_request_no_repositories_allowed: "W tym projekcie nie ma jeszcze dozwolonych repozytoriów (Ustawienia › Pull requesty)."
+  error_pull_request_too_many_urls: "Maksymalna liczba pull requestów, które można powiązać naraz: %{count}."
+  error_pull_request_invalid_repository_pattern: "Wiersz %{line}: „%{pattern}” nie jest prawidłowym wzorcem repozytorium."

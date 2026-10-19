@@ -1,5 +1,7 @@
 # Redmine Pull Requests
 
+**English** | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | [Español](README.es.md)
+
 [![E2E](https://github.com/aarondpn/redmine_pull_requests/actions/workflows/e2e.yml/badge.svg)](https://github.com/aarondpn/redmine_pull_requests/actions/workflows/e2e.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Redmine 5.0 – 7.0](https://img.shields.io/badge/Redmine-5.0%20%E2%80%93%207.0-b32024)
@@ -20,7 +22,8 @@ Link GitHub pull requests and GitLab merge requests to Redmine issues and see th
 - **Webhooks**: automatic linking from `#123` in the title, description or branch name, live updates of state, reviews and checks
 - **Fixing keywords**: merging a pull request that says `Fixes #123` resolves the issue, just like a commit would
 - **REST API** to list, link, refresh and unlink pull requests from scripts and CI
-- Permissions per role, English and German, Redmine 5.0 to 7.0
+- Permissions per role, Redmine 5.0 to 7.0
+- **Translated** into English, German, French, Spanish, Japanese, Simplified Chinese, Polish and Russian
 
 ### See it in action
 

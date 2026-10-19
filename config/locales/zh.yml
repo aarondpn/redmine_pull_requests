@@ -1,0 +1,112 @@
+zh:
+  project_module_pull_requests: 拉取请求
+  permission_view_pull_requests: 查看拉取请求
+  permission_manage_pull_requests: 管理拉取请求
+
+  label_pull_request_plural: 拉取请求
+  label_pull_request_link: 关联拉取请求
+  label_pull_request_url: 拉取请求 URL
+  label_pull_request_linking: 正在关联…
+  label_pull_request_refresh: "从 %{provider} 刷新"
+  label_pull_request_unlink: 取消关联拉取请求
+  label_pull_request_unknown_author: 某人
+  label_pull_request_status_open: 打开
+  label_pull_request_status_draft: 草稿
+  label_pull_request_status_merged: 已合并
+  label_pull_request_status_closed: 已关闭
+  label_pull_request_status_count: "%{status}：%{count}"
+  label_pull_request_time_ago: "%{age}前"
+  label_pull_request_opened_time_ago: "%{age}前打开"
+  label_pull_request_changes: 更改
+  label_pull_request_commits:
+    one: "1 个提交"
+    other: "%{count} 个提交"
+  label_pull_request_diff_title:
+    one: "更改了 1 个文件"
+    other: "更改了 %{count} 个文件"
+  label_pull_request_settings_linking: 关联
+  label_pull_request_view_compact: 紧凑视图
+  label_pull_request_view_expanded: 展开所有
+  label_pull_request_show_details: "显示 %{reference} 的详情"
+  label_pull_request_hide_details: "隐藏 %{reference} 的详情"
+  label_pull_request_reviewers: 审查者
+  label_pull_request_reviewer_approved: "%{user} 批准了这些更改"
+  label_pull_request_reviewer_changes_requested: "%{user} 请求更改"
+  label_pull_request_reviewer_commented: "%{user} 留下了审查评论"
+  label_pull_request_reviewer_pending: "等待 %{user} 审查"
+  label_pull_request_review_approved: 已批准
+  label_pull_request_review_changes_requested: 已请求更改
+  label_pull_request_review_review_required: 需要审查
+  label_pull_request_checks_passed:
+    one: "1 项检查通过"
+    other: "%{count} 项检查通过"
+  label_pull_request_checks_failing:
+    one: "1 项检查失败"
+    other: "%{count} 项检查失败"
+  label_pull_request_checks_progress: "%{passed}/%{total} 项检查通过"
+  label_pull_request_checks_title: "%{passed} 项成功，%{failed} 项失败，%{pending} 项进行中"
+  label_pull_request_pipeline_success: 流水线已通过
+  label_pull_request_pipeline_failure: 流水线失败
+  label_pull_request_pipeline_pending: 流水线运行中
+  label_pull_request_pipeline_neutral: 流水线已取消
+  label_pull_request_comments:
+    one: "1 条评论"
+    other: "%{count} 条评论"
+  label_pull_request_unresolved_threads:
+    one: "1 个未解决的讨论"
+    other: "%{count} 个未解决的讨论"
+
+  button_pull_request_link: 关联
+
+  text_pull_request_open: "%{user} 想要将 %{commits}从 %{head} 合并到 %{base} · %{age}"
+  text_pull_request_merged: "%{user} %{age}将 %{commits}从 %{head} 合并到 %{base}"
+  text_pull_request_closed: "%{user} 的拉取请求 %{age}未经合并即被关闭"
+  text_merge_request_closed: "%{user} 的合并请求 %{age}未经合并即被关闭"
+  text_pull_request_closed_unknown_author: "拉取请求 %{age}未经合并即被关闭"
+  text_merge_request_closed_unknown_author: "合并请求 %{age}未经合并即被关闭"
+  text_pull_requests_empty: 尚未关联任何拉取请求。可通过 URL 关联，或在拉取请求中引用此问题。
+  text_pull_request_url_placeholder: GitHub 拉取请求或 GitLab 合并请求的 URL
+  text_pull_request_link_hint: 粘贴一个或多个 GitHub 拉取请求或 GitLab 合并请求的 URL，以空格或逗号分隔。
+  text_status_changed_by_pull_request: "已在拉取请求 %{value} 中应用。"
+  text_status_changed_by_merge_request: "已在合并请求 %{value} 中应用。"
+
+  error_pull_request_url_blank: 请输入拉取请求 URL。
+  error_pull_request_invalid_url: "%{url} 不是 GitHub 拉取请求或 GitLab 合并请求的 URL。"
+  error_pull_request_fetch_failed: "无法从 %{provider} 加载 %{reference}（%{message}）。"
+
+  setting_pull_request_web_url: "%{provider} URL"
+  setting_pull_request_api_url: API URL
+  setting_pull_request_token: 访问令牌
+  setting_pull_request_webhook_url: Webhook URL
+  setting_pull_request_webhook_secret: Webhook 密钥
+  setting_pull_request_link_bare_refs: "关联不带关键字的 #123 引用"
+  setting_pull_request_link_branch_refs: 按分支名称关联
+  setting_pull_request_apply_fix_keywords: 合并时应用“用于解决问题的关键字”
+
+  text_pull_request_github_web_url: "适用于 GitHub Enterprise，例如 https://github.example.com"
+  text_pull_request_github_api_url: "https://api.github.com 或 https://github.example.com/api/v3"
+  text_pull_request_github_token: "具有拉取请求和提交状态读取权限的细粒度令牌，或具有 repo 范围的经典令牌（后者还能读取私有仓库的检查运行）。私有仓库、未解决的审查讨论以及通过 Webhook 更新审查和检查时必须配置。也可以通过 %{env} 设置。"
+  text_pull_request_github_webhook_url: "在仓库或组织中添加一个内容类型为 application/json 的 Webhook。事件：Pull requests、Pull request reviews、Pull request review comments、Pull request review threads、Issue comments、Check runs、Check suites 和 Statuses。"
+  text_pull_request_gitlab_web_url: "适用于自托管 GitLab，例如 https://gitlab.example.com"
+  text_pull_request_gitlab_api_url: "https://gitlab.com/api/v4 或 https://gitlab.example.com/api/v4"
+  text_pull_request_gitlab_token: "具有 read_api 范围的令牌。私有项目以及在 Webhook 事件中加载提交数、作者、审查和流水线时必须配置。也可以通过 %{env} 设置。"
+  text_pull_request_gitlab_webhook_url: "在项目（在 GitLab Premium 和 Ultimate 中也可以是群组）中添加 Webhook，触发器选择合并请求事件、评论和流水线事件，并将 Webhook 密钥填写为 Secret 令牌。"
+  text_pull_request_webhook_secret: "Webhook 必须配置此项。也可以通过 %{env} 设置。"
+  text_pull_request_link_bare_refs: "否则只关联带有关键字的引用（%{keywords}）。"
+  text_pull_request_link_branch_refs: "例如 123-login-page、feature/123-login-page 或 issue-123"
+  text_pull_request_apply_fix_keywords: "包含“fixes #123”这类引用的拉取请求被合并时，问题会像提交一样被更新。参见“管理 » 配置 » 版本库”中的“%{link}”。"
+
+  # Repository allow-list, limits and stored secrets
+  permission_manage_pull_request_settings: 管理拉取请求配置
+  label_pull_request_allowed_repositories: 允许的仓库
+  label_pull_request_configure_repositories: 配置仓库
+  label_pull_request_remove_secret: 删除
+  text_pull_request_allowed_repositories: "这些仓库的拉取请求可以通过 Webhook 或手动关联到本项目的问题。来自其他仓库的 Webhook 在本项目中会被忽略。"
+  text_pull_request_allowed_repositories_syntax: "每行一个：owner/repo、owner/*（owner 的所有仓库）、group/**（包括子群组）。加上 github: 或 gitlab: 前缀可仅允许其中一个平台。以 # 开头的行会被忽略。"
+  text_pull_request_no_repositories_allowed: 本项目尚未允许任何仓库，因此无法关联拉取请求。
+  text_pull_request_no_repositories_allowed_ask: 本项目尚未允许任何仓库，因此无法关联拉取请求。项目管理人员可以在项目的“配置 › 拉取请求”中添加允许的仓库。
+  text_pull_request_secret_stored: 已保存一个值。留空则保留该值。
+  error_pull_request_repository_not_allowed: "%{repository} 不在本项目允许的仓库中（项目配置 › 拉取请求）。"
+  error_pull_request_no_repositories_allowed: "本项目尚未允许任何仓库（项目配置 › 拉取请求）。"
+  error_pull_request_too_many_urls: "一次最多只能关联 %{count} 个拉取请求。"
+  error_pull_request_invalid_repository_pattern: "第 %{line} 行：“%{pattern}”不是有效的仓库匹配模式。"

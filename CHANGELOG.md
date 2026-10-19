@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0
+
+- French, Spanish, Japanese, Simplified Chinese, Polish and Russian translations
+- README in Simplified Chinese, Japanese and Spanish
+
 ## 1.0.0
 
 First release.
