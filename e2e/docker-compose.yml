@@ -10,8 +10,13 @@ services:
     environment:
       REDMINE_PLUGINS_MIGRATE: "1"
       SECRET_KEY_BASE: e2e-not-so-secret-key-base
+    # SQLite with a busy timeout (see database.yml), copied in before the image's
+    # entrypoint runs, which only generates a database.yml if there is none
+    entrypoint: ["/bin/sh", "-c", "cp /e2e/database.yml config/database.yml && exec /docker-entrypoint.sh \"$$@\"", "--"]
+    command: ["rails", "server", "-b", "0.0.0.0"]
     volumes:
       - ..:/usr/src/redmine/plugins/redmine_pull_requests:ro
+      - ./database.yml:/e2e/database.yml:ro
     depends_on:
       - mock-api
     healthcheck:

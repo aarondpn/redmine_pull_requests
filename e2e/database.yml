@@ -1,0 +1,7 @@
+# SQLite with a busy timeout: without it, concurrent writes (e.g. parallel
+# webhook deliveries in the tests) fail with "database is locked" instead of
+# waiting. docker-compose.yml copies this file into the container.
+production:
+  adapter: sqlite3
+  database: sqlite/redmine.db
+  timeout: 5000
