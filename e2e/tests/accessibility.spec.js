@@ -173,7 +173,7 @@ test.describe('wording', () => {
 
     const card = panel(page).locator('.pr')
     await expect(card.locator('.pr-diff')).toHaveAttribute('title', '1 file changed')
-    await expect(card.locator('.pr-summary')).toContainText('someone merged 3 commits into main')
+    await expect(card.locator('.pr-summary')).toContainText('Someone merged 3 commits into main')
   })
 
   test('the fixing keywords hint links to the repository settings', async ({ browser }) => {

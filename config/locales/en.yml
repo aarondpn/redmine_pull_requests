@@ -9,7 +9,7 @@ en:
   label_pull_request_linking: Linking…
   label_pull_request_refresh: "Refresh from %{provider}"
   label_pull_request_unlink: Unlink pull request
-  label_pull_request_unknown_author: someone
+  label_pull_request_unknown_author: Someone
   label_pull_request_status_open: Open
   label_pull_request_status_draft: Draft
   label_pull_request_status_merged: Merged

@@ -9,7 +9,7 @@ ru:
   label_pull_request_linking: Связывание…
   label_pull_request_refresh: "Обновить из %{provider}"
   label_pull_request_unlink: Отвязать запрос на слияние
-  label_pull_request_unknown_author: кто-то
+  label_pull_request_unknown_author: Кто-то
   label_pull_request_status_open: Открыт
   label_pull_request_status_draft: Черновик
   label_pull_request_status_merged: Слит

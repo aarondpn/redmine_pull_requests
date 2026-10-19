@@ -9,7 +9,7 @@ pl:
   label_pull_request_linking: Powiązywanie…
   label_pull_request_refresh: "Odśwież z serwisu %{provider}"
   label_pull_request_unlink: Usuń powiązanie
-  label_pull_request_unknown_author: ktoś
+  label_pull_request_unknown_author: Ktoś
   label_pull_request_status_open: Otwarty
   label_pull_request_status_draft: Szkic
   label_pull_request_status_merged: Scalony

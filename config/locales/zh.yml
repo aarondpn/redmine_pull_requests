@@ -10,13 +10,13 @@ zh:
   label_pull_request_refresh: "从 %{provider} 刷新"
   label_pull_request_unlink: 取消关联拉取请求
   label_pull_request_unknown_author: 某人
-  label_pull_request_status_open: 打开
+  label_pull_request_status_open: 已开启
   label_pull_request_status_draft: 草稿
   label_pull_request_status_merged: 已合并
   label_pull_request_status_closed: 已关闭
   label_pull_request_status_count: "%{status}：%{count}"
   label_pull_request_time_ago: "%{age}前"
-  label_pull_request_opened_time_ago: "%{age}前打开"
+  label_pull_request_opened_time_ago: "%{age}前创建"
   label_pull_request_changes: 更改
   label_pull_request_commits:
     one: "1 个提交"
