@@ -1,0 +1,15 @@
+{
+  "name": "redmine-pull-requests-e2e",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "stack:up": "docker compose up -d --wait && docker compose exec -T redmine bin/rails runner plugins/redmine_pull_requests/e2e/seed.rb",
+    "stack:down": "docker compose down -v",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "screenshots": "SCREENSHOTS=1 playwright test screenshots"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0"
+  }
+}

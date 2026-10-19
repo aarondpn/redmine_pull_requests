@@ -1,0 +1,5 @@
+api.array :pull_requests, api_meta(total_count: @links.size) do
+  @links.each do |link|
+    render_pull_request_api(api, link)
+  end
+end

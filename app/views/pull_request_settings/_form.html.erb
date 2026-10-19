@@ -1,0 +1,17 @@
+<%= error_messages_for setting %>
+
+<%= form_tag project_pull_request_settings_path(@project), method: :patch, id: 'pull-request-project-settings' do %>
+<div class="box tabular">
+  <p>
+    <%= label_tag 'pull_request_repositories', l(:label_pull_request_allowed_repositories) %>
+    <%= text_area_tag 'repositories', setting.repositories, id: 'pull_request_repositories', rows: 8, cols: 60,
+                      spellcheck: false, placeholder: "github:acme/web\ngitlab:acme/platform/**",
+                      'aria-describedby': 'pull_request_repositories_info' %>
+    <em class="info" id="pull_request_repositories_info">
+      <%= l(:text_pull_request_allowed_repositories) %><br>
+      <%= l(:text_pull_request_allowed_repositories_syntax) %>
+    </em>
+  </p>
+</div>
+<%= submit_tag l(:button_save) %>
+<% end %>

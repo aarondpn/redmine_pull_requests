@@ -1,0 +1,90 @@
+<% pull_requests = issue.pull_requests.to_a %>
+<% can_manage = User.current.allowed_to?(:manage_pull_requests, issue.project) %>
+<% errors = local_assigns[:errors].presence %>
+<% show_form = errors && local_assigns.fetch(:show_form, true) %>
+<% if pull_requests.any? || can_manage %>
+<% content_for :header_tags do %>
+  <%# for all media, Redmine links plugin stylesheets for the screen only and the print styles would be lost %>
+  <%= stylesheet_link_tag 'pull_requests', plugin: 'redmine_pull_requests', media: 'all' %>
+  <%= javascript_include_tag 'pull_requests', plugin: 'redmine_pull_requests' %>
+<% end %>
+<hr />
+<div id="pull-requests" class="pull-requests">
+  <div class="pr-header">
+  <p class="pr-heading">
+    <strong><%= l(:label_pull_request_plural) %></strong>
+    <% if pull_requests.any? %>
+      <span class="pr-counter"><%= pull_requests.size %></span>
+      <span class="pr-stats">
+        <% pull_requests_status_counts(pull_requests).each do |status, count| %>
+          <span class="pr-stat pr-stat--<%= status %>" title="<%= pull_request_status_label(status) %>" role="img"
+                aria-label="<%= l(:label_pull_request_status_count, status: pull_request_status_label(status), count: count) %>">
+            <%= pull_request_octicon(PullRequestsHelper::STATUS_ICONS[status], size: 12) %><%= count %>
+          </span>
+        <% end %>
+      </span>
+    <% end %>
+  </p>
+  <span class="pr-header__actions">
+  <% if pull_requests.size > 1 %>
+    <button type="button" class="pr-view-toggle" data-pr-view-toggle hidden
+            data-label-compact="<%= l(:label_pull_request_view_compact) %>"
+            data-label-expanded="<%= l(:label_pull_request_view_expanded) %>">
+      <%= pull_request_octicon('unfold', size: 14) %><%= pull_request_octicon('fold', size: 14) %><span></span>
+    </button>
+  <% end %>
+  <% if can_manage %>
+    <%# Like toggle_link, which ignores the class option before Redmine 7. SVG icons are available since Redmine 6 %>
+    <% if respond_to?(:sprite_icon) %>
+      <% icon = Redmine::VERSION::MAJOR >= 7 ? 'link-add' : 'link' %>
+      <% link_label, link_class = sprite_icon(icon, l(:label_pull_request_link)), "icon icon-#{icon} pr-header__action" %>
+    <% else %>
+      <% link_label, link_class = pull_request_octicon('link', size: 14) + l(:label_pull_request_link), 'pr-header__action pr-header__action--octicon' %>
+    <% end %>
+    <%= link_to link_label, '#', class: link_class, data: { pr_link_toggle: true },
+                'aria-controls': 'new-pull-request-form', 'aria-expanded': show_form.present?,
+                onclick: "$('#new-pull-request-form').toggle(); $('#pull_request_url:visible').focus(); return false;" %>
+  <% end %>
+  </span>
+  </div>
+
+  <% if can_manage %>
+  <%= form_tag issue_pull_requests_path(issue), remote: true, id: 'new-pull-request-form',
+               class: 'pr-link-form', style: (show_form ? nil : 'display: none;') do %>
+    <div class="pr-link-form__row">
+      <label for="pull_request_url" class="pr-link-form__field">
+        <%= pull_request_octicon('link') %>
+        <span class="hidden-for-sighted"><%= l(:label_pull_request_url) %></span>
+        <%= text_field_tag 'url', params[:url].presence && errors ? params[:url] : nil, id: 'pull_request_url',
+                           placeholder: l(:text_pull_request_url_placeholder),
+                           autocomplete: 'off', spellcheck: false %>
+      </label>
+      <%= submit_tag l(:button_pull_request_link), class: 'pr-button pr-button--primary', name: nil,
+                     data: { disable_with: l(:label_pull_request_linking) } %>
+      <%= link_to l(:button_cancel), '#', class: 'pr-button', data: { pr_link_cancel: true },
+                  onclick: '$("#new-pull-request-form").hide(); return false;' %>
+    </div>
+    <p class="pr-link-form__hint"><%= l(:text_pull_request_link_hint) %></p>
+  <% end %>
+  <% end %>
+
+  <%# Repositories allowed in this project (Project settings » Pull requests) %>
+  <%= render partial: 'pull_requests/repositories_hint', locals: { project: issue.project } if can_manage %>
+
+  <% if errors %>
+    <div class="pr-errors" role="alert">
+      <% errors.each do |error| %><p><%= error %></p><% end %>
+    </div>
+  <% end %>
+
+  <% if pull_requests.any? %>
+    <ul class="pr-list">
+      <%= render partial: 'pull_requests/pull_request', collection: pull_requests,
+                 locals: { issue: issue, can_manage: can_manage } %>
+    </ul>
+    <%= javascript_tag "window.RedminePullRequests && RedminePullRequests.init(document.getElementById('pull-requests'));" %>
+  <% elsif can_manage && PullRequestProjectSetting.repositories_configured?(issue.project) %>
+    <p class="pr-empty"><%= l(:text_pull_requests_empty) %></p>
+  <% end %>
+</div>
+<% end %>

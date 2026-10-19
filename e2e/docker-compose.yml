@@ -1,0 +1,32 @@
+name: redmine-pr-e2e
+
+services:
+  redmine:
+    # REDMINE_IMAGE=redmine:5.1 for other versions (the default is kept up to date by Renovate)
+    image: ${REDMINE_IMAGE:-redmine:7.0.2}
+    # only reachable from this machine: the test users have well-known passwords
+    ports:
+      - "127.0.0.1:${REDMINE_PORT:-3000}:3000"
+    environment:
+      REDMINE_PLUGINS_MIGRATE: "1"
+      SECRET_KEY_BASE: e2e-not-so-secret-key-base
+    volumes:
+      - ..:/usr/src/redmine/plugins/redmine_pull_requests:ro
+    depends_on:
+      - mock-api
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO /dev/null http://localhost:3000/login || exit 1"]
+      interval: 3s
+      timeout: 3s
+      retries: 60
+      start_period: 20s
+
+  mock-api:
+    image: node:22-alpine
+    command: ["node", "/srv/server.mjs"]
+    environment:
+      PUBLIC_URL: http://localhost:${MOCK_API_PORT:-4010}
+    ports:
+      - "127.0.0.1:${MOCK_API_PORT:-4010}:4010"
+    volumes:
+      - ./mock-api:/srv:ro

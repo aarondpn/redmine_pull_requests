@@ -1,0 +1,10 @@
+<% unless PullRequestProjectSetting.repositories_configured?(project) %>
+  <p class="pr-repositories-hint">
+    <% if User.current.allowed_to?(:manage_pull_request_settings, project) %>
+      <%= l(:text_pull_request_no_repositories_allowed) %>
+      <%= link_to l(:label_pull_request_configure_repositories), settings_project_path(project, tab: 'pull_requests') %>
+    <% else %>
+      <%= l(:text_pull_request_no_repositories_allowed_ask) %>
+    <% end %>
+  </p>
+<% end %>

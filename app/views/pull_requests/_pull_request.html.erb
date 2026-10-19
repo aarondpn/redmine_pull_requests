@@ -1,0 +1,64 @@
+<% status = pull_request.status %>
+<li class="pr pr--<%= status %>" id="pull-request-<%= pull_request.id %>" data-status="<%= status %>"
+    data-provider="<%= pull_request.provider %>">
+  <span class="pr-tile" title="<%= pull_request_status_label(status) %>" role="img" aria-label="<%= pull_request_status_label(status) %>">
+    <%= pull_request_status_icon(pull_request) %>
+  </span>
+  <div class="pr-card">
+    <div class="pr-card__main">
+      <div class="pr-card__title">
+        <%= link_to pull_request.title.presence || pull_request.reference, pull_request.url,
+                    class: 'pr-title', target: '_blank', rel: 'noopener noreferrer' %>
+        <span class="pr-number"><%= pull_request.display_number %></span>
+        <span class="pr-compact-repo"><%= pull_request_provider_icon(pull_request) %><%= pull_request.repository %></span>
+      </div>
+      <div class="pr-card__body" id="pull-request-<%= pull_request.id %>-details">
+      <div class="pr-card__meta">
+        <%= link_to pull_request.repository_url, class: 'pr-repo', target: '_blank', rel: 'noopener noreferrer',
+                    title: "#{pull_request.provider_name}: #{pull_request.repository}",
+                    'aria-label': "#{pull_request.provider_name}: #{pull_request.repository}" do %><%= pull_request_provider_icon(pull_request, decorative: true) %><%= pull_request.repository %><% end %><span class="pr-dot" aria-hidden="true">·</span><%= pull_request_avatar(pull_request) %><span class="pr-summary"><%= pull_request_summary(pull_request) %></span>
+      </div>
+      <% if pull_request.review_details? %>
+        <div class="pr-card__details">
+          <%= pull_request_reviewers(pull_request) %>
+          <%= pull_request_review_decision(pull_request) %>
+          <%= pull_request_checks(pull_request) %>
+          <%= pull_request_comments(pull_request) %>
+          <%= pull_request_unresolved_threads(pull_request) %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+    <div class="pr-card__aside">
+      <%= pull_request_compact_indicators(pull_request) %>
+      <% if pull_request.diff_stats? %>
+        <span class="pr-diff" dir="ltr" title="<%= l(:label_pull_request_diff_title, count: pull_request.changed_files.to_i) %>">
+          <span class="pr-diff__add">+<%= pull_request_number_with_delimiter pull_request.additions %></span>
+          <span class="pr-diff__del">&minus;<%= pull_request_number_with_delimiter pull_request.deletions %></span>
+        </span>
+      <% end %>
+      <%# the status is announced by the tile at the start of the row %>
+      <span class="pr-state pr-state--<%= status %>" aria-hidden="true">
+        <%= pull_request_status_icon(pull_request) %><%= pull_request_status_label(status) %>
+      </span>
+      <% if can_manage %>
+        <span class="pr-actions">
+          <%= link_to pull_request_octicon('sync'), refresh_issue_pull_request_path(issue, pull_request),
+                      method: :post, remote: true, class: 'pr-action pr-action--refresh',
+                      title: l(:label_pull_request_refresh, provider: pull_request.provider_name),
+                      'aria-label': l(:label_pull_request_refresh, provider: pull_request.provider_name) %>
+          <%= link_to pull_request_octicon('x'), issue_pull_request_path(issue, pull_request),
+                      method: :delete, remote: true, class: 'pr-action pr-action--unlink',
+                      data: { confirm: l(:text_are_you_sure) },
+                      title: l(:label_pull_request_unlink), 'aria-label': l(:label_pull_request_unlink) %>
+        </span>
+      <% end %>
+      <% show_label = l(:label_pull_request_show_details, reference: pull_request.reference) %>
+      <button type="button" class="pr-toggle" aria-expanded="false" aria-controls="pull-request-<%= pull_request.id %>-details"
+              aria-label="<%= show_label %>" data-label-show="<%= show_label %>"
+              data-label-hide="<%= l(:label_pull_request_hide_details, reference: pull_request.reference) %>">
+        <%= pull_request_octicon('chevron-down') %>
+      </button>
+    </div>
+  </div>
+</li>

@@ -1,0 +1,112 @@
+de:
+  project_module_pull_requests: Pull Requests
+  permission_view_pull_requests: Pull Requests ansehen
+  permission_manage_pull_requests: Pull Requests verwalten
+
+  label_pull_request_plural: Pull Requests
+  label_pull_request_link: Pull Request verknüpfen
+  label_pull_request_url: Pull-Request-URL
+  label_pull_request_linking: Verknüpfe…
+  label_pull_request_refresh: "Von %{provider} aktualisieren"
+  label_pull_request_unlink: Verknüpfung entfernen
+  label_pull_request_unknown_author: Jemand
+  label_pull_request_status_open: Offen
+  label_pull_request_status_draft: Entwurf
+  label_pull_request_status_merged: Gemergt
+  label_pull_request_status_closed: Geschlossen
+  label_pull_request_status_count: "%{status}: %{count}"
+  label_pull_request_time_ago: "vor %{age}"
+  label_pull_request_opened_time_ago: "eröffnet vor %{age}"
+  label_pull_request_changes: Änderungen
+  label_pull_request_commits:
+    one: "1 Commit"
+    other: "%{count} Commits"
+  label_pull_request_diff_title:
+    one: "1 Datei geändert"
+    other: "%{count} Dateien geändert"
+  label_pull_request_settings_linking: Verknüpfung
+  label_pull_request_view_compact: Kompakte Ansicht
+  label_pull_request_view_expanded: Alle aufklappen
+  label_pull_request_show_details: "Details zu %{reference} anzeigen"
+  label_pull_request_hide_details: "Details zu %{reference} ausblenden"
+  label_pull_request_reviewers: Reviewer
+  label_pull_request_reviewer_approved: "%{user} hat die Änderungen freigegeben"
+  label_pull_request_reviewer_changes_requested: "%{user} hat Änderungen angefordert"
+  label_pull_request_reviewer_commented: "%{user} hat Review-Kommentare hinterlassen"
+  label_pull_request_reviewer_pending: "Wartet auf Review von %{user}"
+  label_pull_request_review_approved: Freigegeben
+  label_pull_request_review_changes_requested: Änderungen angefordert
+  label_pull_request_review_review_required: Review erforderlich
+  label_pull_request_checks_passed:
+    one: "1 Check erfolgreich"
+    other: "%{count} Checks erfolgreich"
+  label_pull_request_checks_failing:
+    one: "1 Check fehlgeschlagen"
+    other: "%{count} Checks fehlgeschlagen"
+  label_pull_request_checks_progress: "%{passed}/%{total} Checks erfolgreich"
+  label_pull_request_checks_title: "%{passed} erfolgreich, %{failed} fehlgeschlagen, %{pending} laufen noch"
+  label_pull_request_pipeline_success: Pipeline erfolgreich
+  label_pull_request_pipeline_failure: Pipeline fehlgeschlagen
+  label_pull_request_pipeline_pending: Pipeline läuft
+  label_pull_request_pipeline_neutral: Pipeline abgebrochen
+  label_pull_request_comments:
+    one: "1 Kommentar"
+    other: "%{count} Kommentare"
+  label_pull_request_unresolved_threads:
+    one: "1 offener Thread"
+    other: "%{count} offene Threads"
+
+  button_pull_request_link: Verknüpfen
+
+  text_pull_request_open: "%{user} möchte %{commits} von %{head} in %{base} mergen · %{age}"
+  text_pull_request_merged: "%{user} hat %{age} %{commits} von %{head} in %{base} gemergt"
+  text_pull_request_closed: "Pull Request von %{user} wurde %{age} ohne Merge geschlossen"
+  text_merge_request_closed: "Merge Request von %{user} wurde %{age} ohne Merge geschlossen"
+  text_pull_request_closed_unknown_author: "Pull Request wurde %{age} ohne Merge geschlossen"
+  text_merge_request_closed_unknown_author: "Merge Request wurde %{age} ohne Merge geschlossen"
+  text_pull_requests_empty: Noch keine Pull Requests verknüpft. Per URL verknüpfen oder dieses Ticket in einem Pull Request referenzieren.
+  text_pull_request_url_placeholder: URL eines GitHub-Pull-Requests oder GitLab-Merge-Requests
+  text_pull_request_link_hint: Eine oder mehrere URLs von GitHub-Pull-Requests oder GitLab-Merge-Requests einfügen, getrennt durch Leerzeichen oder Kommas.
+  text_status_changed_by_pull_request: "Umgesetzt in Pull Request %{value}."
+  text_status_changed_by_merge_request: "Umgesetzt in Merge Request %{value}."
+
+  error_pull_request_url_blank: Bitte eine Pull-Request-URL eingeben.
+  error_pull_request_invalid_url: "%{url} ist keine URL eines GitHub-Pull-Requests oder GitLab-Merge-Requests."
+  error_pull_request_fetch_failed: "%{reference} konnte nicht von %{provider} geladen werden (%{message})."
+
+  setting_pull_request_web_url: "%{provider}-URL"
+  setting_pull_request_api_url: API-URL
+  setting_pull_request_token: Access Token
+  setting_pull_request_webhook_url: Webhook-URL
+  setting_pull_request_webhook_secret: Webhook-Secret
+  setting_pull_request_link_bare_refs: "Einfache #123-Referenzen verknüpfen"
+  setting_pull_request_link_branch_refs: Über Branch-Namen verknüpfen
+  setting_pull_request_apply_fix_keywords: Status-Schlüsselwörter beim Merge anwenden
+
+  text_pull_request_github_web_url: "Für GitHub Enterprise, z. B. https://github.example.com"
+  text_pull_request_github_api_url: "https://api.github.com oder https://github.example.com/api/v3"
+  text_pull_request_github_token: "Fine-grained Token mit Lesezugriff auf Pull Requests und Commit-Status, oder ein klassisches Token mit dem Scope repo, das auch die Check-Runs privater Repositories lesen kann. Erforderlich für private Repositories, offene Review-Threads und um Reviews und Checks per Webhook zu aktualisieren. Alternativ über %{env}."
+  text_pull_request_github_webhook_url: "Im Repository oder der Organisation einen Webhook mit Content-Type application/json anlegen. Events: Pull requests, Pull request reviews, Pull request review comments, Pull request review threads, Issue comments, Check runs, Check suites und Statuses."
+  text_pull_request_gitlab_web_url: "Für selbst gehostetes GitLab, z. B. https://gitlab.example.com"
+  text_pull_request_gitlab_api_url: "https://gitlab.com/api/v4 oder https://gitlab.example.com/api/v4"
+  text_pull_request_gitlab_token: "Token mit dem Scope read_api. Erforderlich für private Projekte und um Commit-Anzahl, Autor, Reviews und Pipelines bei Webhook-Events zu laden. Alternativ über %{env}."
+  text_pull_request_gitlab_webhook_url: "Im Projekt (oder in der Gruppe, ab GitLab Premium) einen Webhook mit den Triggern „Merge request events“, „Comments“ und „Pipeline events“ anlegen und das Webhook-Secret als Secret Token eintragen."
+  text_pull_request_webhook_secret: "Für den Webhook erforderlich. Alternativ über %{env}."
+  text_pull_request_link_bare_refs: "Sonst werden nur Referenzen mit Schlüsselwort verknüpft (%{keywords})."
+  text_pull_request_link_branch_refs: "z. B. 123-login-seite, feature/123-login-seite oder issue-123"
+  text_pull_request_apply_fix_keywords: "Wird ein Pull Request mit „fixes #123“ gemergt, wird das Ticket wie bei einem Commit aktualisiert. Siehe %{link} in den Repository-Einstellungen."
+
+  # Repository allow-list, limits and stored secrets
+  permission_manage_pull_request_settings: Pull-Request-Einstellungen verwalten
+  label_pull_request_allowed_repositories: Erlaubte Repositories
+  label_pull_request_configure_repositories: Repositories einrichten
+  label_pull_request_remove_secret: Entfernen
+  text_pull_request_allowed_repositories: "Pull Requests aus diesen Repositories können mit Tickets dieses Projekts verknüpft werden, per Webhook oder von Hand. Webhooks anderer Repositories werden für dieses Projekt ignoriert."
+  text_pull_request_allowed_repositories_syntax: "Ein Muster pro Zeile: owner/repo, owner/* (alle Repositories von owner), group/** (inklusive Untergruppen). Mit vorangestelltem github: oder gitlab: gilt der Eintrag nur dort. Zeilen, die mit # beginnen, werden ignoriert."
+  text_pull_request_no_repositories_allowed: In diesem Projekt sind noch keine Repositories erlaubt, deshalb können keine Pull Requests verknüpft werden.
+  text_pull_request_no_repositories_allowed_ask: In diesem Projekt sind noch keine Repositories erlaubt, deshalb können keine Pull Requests verknüpft werden. Projektverantwortliche können sie unter Konfiguration › Pull Requests erlauben.
+  text_pull_request_secret_stored: Ein Wert ist gespeichert. Leer lassen, um ihn zu behalten.
+  error_pull_request_repository_not_allowed: "%{repository} ist in diesem Projekt nicht erlaubt (Konfiguration › Pull Requests)."
+  error_pull_request_no_repositories_allowed: "In diesem Projekt sind noch keine Repositories erlaubt (Konfiguration › Pull Requests)."
+  error_pull_request_too_many_urls: "Bitte höchstens %{count} Pull Requests auf einmal verknüpfen."
+  error_pull_request_invalid_repository_pattern: "Zeile %{line}: „%{pattern}“ ist kein gültiges Repository-Muster."

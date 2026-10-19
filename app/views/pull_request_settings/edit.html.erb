@@ -1,0 +1,5 @@
+<h2><%= link_to l(:label_settings), settings_project_path(@project, tab: 'pull_requests') %> » <%= l(:label_pull_request_plural) %></h2>
+
+<%= render partial: 'pull_request_settings/form', locals: { setting: @pull_request_setting } %>
+
+<% html_title(l(:label_settings)) -%>

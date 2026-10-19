@@ -1,0 +1,56 @@
+<% { 'github' => 'GitHub', 'gitlab' => 'GitLab' }.each do |provider, name| %>
+<fieldset class="box tabular" id="pull-request-settings-<%= provider %>">
+  <legend><%= name %></legend>
+  <p>
+    <%= label_tag "settings_#{provider}_web_url", l(:setting_pull_request_web_url, provider: name) %>
+    <%= url_field_tag "settings[#{provider}_web_url]", settings["#{provider}_web_url"], id: "settings_#{provider}_web_url", size: 50 %>
+    <em class="info"><%= l(:"text_pull_request_#{provider}_web_url") %></em>
+  </p>
+  <p>
+    <%= label_tag "settings_#{provider}_api_url", l(:setting_pull_request_api_url) %>
+    <%= url_field_tag "settings[#{provider}_api_url]", settings["#{provider}_api_url"], id: "settings_#{provider}_api_url", size: 50 %>
+    <em class="info"><%= l(:"text_pull_request_#{provider}_api_url") %></em>
+  </p>
+  <p>
+    <%= label_tag "settings_#{provider}_token", l(:setting_pull_request_token) %>
+    <%= render partial: 'settings/pull_requests_secret', locals: { settings: settings, name: "#{provider}_token",
+                                                                         label: "#{name}: #{l(:setting_pull_request_token)}" } %>
+    <em class="info"><%= l(:"text_pull_request_#{provider}_token", env: "REDMINE_PR_#{provider.upcase}_TOKEN") %></em>
+  </p>
+  <p>
+    <label><%= l(:setting_pull_request_webhook_url) %></label>
+    <code class="pr-webhook-url"><%= send("#{provider}_pull_request_webhook_url") %></code>
+    <em class="info"><%= l(:"text_pull_request_#{provider}_webhook_url") %></em>
+  </p>
+  <p>
+    <%= label_tag "settings_#{provider}_webhook_secret", l(:setting_pull_request_webhook_secret) %>
+    <%= render partial: 'settings/pull_requests_secret', locals: { settings: settings, name: "#{provider}_webhook_secret",
+                                                                         label: "#{name}: #{l(:setting_pull_request_webhook_secret)}" } %>
+    <em class="info"><%= l(:text_pull_request_webhook_secret, env: "REDMINE_PR_#{provider.upcase}_WEBHOOK_SECRET") %></em>
+  </p>
+</fieldset>
+<% end %>
+
+<fieldset class="box tabular">
+  <legend><%= l(:label_pull_request_settings_linking) %></legend>
+  <p>
+    <%= label_tag 'settings_link_bare_refs', l(:setting_pull_request_link_bare_refs) %>
+    <%= hidden_field_tag 'settings[link_bare_refs]', '0', id: nil %>
+    <%= check_box_tag 'settings[link_bare_refs]', '1', settings['link_bare_refs'].to_s == '1', id: 'settings_link_bare_refs' %>
+    <em class="info"><%= l(:text_pull_request_link_bare_refs, keywords: Setting.commit_ref_keywords) %></em>
+  </p>
+  <p>
+    <%= label_tag 'settings_link_branch_refs', l(:setting_pull_request_link_branch_refs) %>
+    <%= hidden_field_tag 'settings[link_branch_refs]', '0', id: nil %>
+    <%= check_box_tag 'settings[link_branch_refs]', '1', settings['link_branch_refs'].to_s == '1', id: 'settings_link_branch_refs' %>
+    <em class="info"><%= l(:text_pull_request_link_branch_refs) %></em>
+  </p>
+  <p>
+    <%= label_tag 'settings_apply_fix_keywords', l(:setting_pull_request_apply_fix_keywords) %>
+    <%= hidden_field_tag 'settings[apply_fix_keywords]', '0', id: nil %>
+    <%= check_box_tag 'settings[apply_fix_keywords]', '1', settings['apply_fix_keywords'].to_s == '1', id: 'settings_apply_fix_keywords' %>
+    <%# the translation is trusted, the link label comes from Redmine's own settings %>
+    <em class="info"><%= l(:text_pull_request_apply_fix_keywords,
+                           link: link_to(l(:setting_commit_fix_keywords), settings_path(tab: 'repositories'))).html_safe %></em>
+  </p>
+</fieldset>

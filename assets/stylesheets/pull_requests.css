@@ -1,0 +1,808 @@
+/* Pull requests panel on the issue page (GitHub-like) */
+
+.pull-requests {
+  --pr-open: #1f883d;
+  --pr-open-fg: #1a7f37;
+  --pr-draft: #6e7781;
+  --pr-draft-fg: #59636e;
+  --pr-merged: #8250df;
+  --pr-merged-fg: #8250df;
+  --pr-closed: #cf222e;
+  --pr-closed-fg: #d1242f;
+  --pr-border: #d1d9e0;
+  --pr-muted: #59636e;
+  --pr-text: #1f2328;
+  --pr-subtle-bg: #f6f8fa;
+  --pr-radius: 6px;
+  --pr-add: #1a7f37;
+  --pr-del: #d1242f;
+}
+
+.pull-requests .pr-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin: 1em 0 10px;
+}
+
+/* On small screens the actions wrap below the heading, and the counters below the title */
+.pull-requests .pr-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  margin: 0;
+}
+
+.pull-requests .pr-heading strong {
+  white-space: nowrap;
+}
+
+.pull-requests .pr-heading:focus {
+  outline: none;
+}
+
+.pull-requests .pr-header__action {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.pull-requests .pr-header__action--octicon {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pull-requests .pr-counter {
+  display: inline-block;
+  min-inline-size: 20px;
+  padding: 0 6px;
+  border-radius: 2em;
+  background: rgba(175, 184, 193, 0.2);
+  color: var(--pr-text);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: center;
+}
+
+.pull-requests .pr-stats {
+  display: inline-flex;
+  gap: 10px;
+  margin-inline-start: 4px;
+  font-size: 0.75rem;
+  color: var(--pr-muted);
+}
+
+.pull-requests .pr-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.pull-requests .pr-stat--open .octicon { color: var(--pr-open-fg); }
+.pull-requests .pr-stat--draft .octicon { color: var(--pr-draft-fg); }
+.pull-requests .pr-stat--merged .octicon { color: var(--pr-merged-fg); }
+.pull-requests .pr-stat--closed .octicon { color: var(--pr-closed-fg); }
+
+/* List */
+
+.pull-requests .pr-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 4px;
+  padding: 0;
+  list-style: none;
+}
+
+.pull-requests .pr {
+  --pr-color: var(--pr-open);
+  --pr-fg: var(--pr-open-fg);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.pull-requests .pr--draft { --pr-color: var(--pr-draft); --pr-fg: var(--pr-draft-fg); }
+.pull-requests .pr--merged { --pr-color: var(--pr-merged); --pr-fg: var(--pr-merged-fg); }
+.pull-requests .pr--closed { --pr-color: var(--pr-closed); --pr-fg: var(--pr-closed-fg); }
+
+.pull-requests .pr-tile {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  inline-size: 32px;
+  block-size: 32px;
+  margin-block-start: 6px;
+  border-radius: var(--pr-radius);
+  background: var(--pr-color, var(--pr-merged));
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(31, 35, 40, 0.08);
+}
+
+.pull-requests .pr-card {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-block: 10px;
+  padding-inline: 16px 12px;
+  border: 1px solid var(--pr-border);
+  border-radius: var(--pr-radius);
+  background: #fff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pull-requests .pr:hover .pr-card {
+  border-color: color-mix(in srgb, var(--pr-color) 55%, var(--pr-border));
+  box-shadow: 0 1px 3px rgba(31, 35, 40, 0.06);
+}
+
+.pull-requests .pr-card__main {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+}
+
+.pull-requests .pr-card__title {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  min-inline-size: 0;
+}
+
+.pull-requests a.pr-title {
+  overflow: hidden;
+  color: var(--pr-text);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pull-requests a.pr-title:hover {
+  color: #0969da;
+  text-decoration: underline;
+}
+
+.pull-requests .pr-number {
+  flex: 0 0 auto;
+  direction: ltr; /* "!12" in right-to-left pages */
+  unicode-bidi: isolate;
+  color: var(--pr-muted);
+  font-size: 0.9375rem;
+  font-weight: 400;
+}
+
+.pull-requests .pr-card__meta {
+  margin-block-start: 2px;
+  color: var(--pr-muted);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.pull-requests a.pr-repo {
+  color: var(--pr-muted);
+  font-weight: 500;
+}
+
+/* names stay in one piece inside right-to-left sentences */
+.pull-requests a.pr-repo,
+.pull-requests .pr-author,
+.pull-requests code.pr-branch {
+  unicode-bidi: isolate;
+}
+
+.pull-requests .pr-provider {
+  margin-inline-end: 4px;
+  vertical-align: -1px;
+}
+
+.pull-requests .pr-provider--github { color: var(--pr-text); }
+.pull-requests .pr-provider--gitlab { color: #fc6d26; }
+
+.pull-requests a.pr-repo:hover {
+  color: #0969da;
+}
+
+.pull-requests .pr-dot {
+  margin: 0 4px;
+  color: #8c959f;
+}
+
+.pull-requests .pr-avatar {
+  inline-size: 16px;
+  block-size: 16px;
+  margin-inline-end: 4px;
+  border-radius: 50%;
+  vertical-align: -3px;
+  box-shadow: 0 0 0 1px rgba(31, 35, 40, 0.15);
+}
+
+
+.pull-requests .pr-summary time {
+  white-space: nowrap;
+}
+
+.pull-requests .pr-author {
+  color: var(--pr-text);
+  font-weight: 600;
+}
+
+.pull-requests code.pr-branch {
+  display: inline-block;
+  max-inline-size: 220px;
+  overflow: hidden;
+  padding: 0 5px;
+  border-radius: var(--pr-radius);
+  background: #ddf4ff;
+  color: #0969da;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.6875rem;
+  line-height: 1.6;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+
+/* Review details: reviewers, decision, checks, comments, threads */
+
+.pull-requests .pr-card__details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  margin-block-start: 8px;
+  color: var(--pr-muted);
+  font-size: 0.75rem;
+  line-height: 20px;
+}
+
+.pull-requests .pr-reviewers {
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pull-requests .pr-reviewer {
+  position: relative;
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.pull-requests .pr-reviewer img,
+.pull-requests .pr-reviewer__initial {
+  display: block;
+  box-sizing: border-box;
+  inline-size: 20px;
+  block-size: 20px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+.pull-requests .pr-reviewer__initial {
+  background: #6e7781;
+  color: #fff;
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+}
+
+.pull-requests .pr-reviewer__badge {
+  position: absolute;
+  inset-block-end: -2px;
+  inset-inline-end: -4px;
+  display: grid;
+  place-items: center;
+  inline-size: 12px;
+  block-size: 12px;
+  border-radius: 50%;
+  background: var(--pr-muted);
+  color: #fff;
+  box-shadow: 0 0 0 1.5px #fff;
+}
+
+.pull-requests .pr-reviewer--approved .pr-reviewer__badge { background: var(--pr-open); }
+.pull-requests .pr-reviewer--changes_requested .pr-reviewer__badge { background: var(--pr-closed-fg); }
+.pull-requests .pr-reviewer--pending .pr-reviewer__badge { background: #bf8700; }
+
+.pull-requests .pr-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--pr-muted);
+  white-space: nowrap;
+}
+
+.pull-requests a.pr-detail:hover {
+  color: #0969da;
+  text-decoration: none;
+}
+
+.pull-requests .pr-decision {
+  font-weight: 600;
+}
+
+.pull-requests .pr-decision--approved,
+.pull-requests .pr-checks--success .octicon { color: var(--pr-add); }
+.pull-requests .pr-decision--changes_requested,
+.pull-requests .pr-checks--failure .octicon { color: var(--pr-del); }
+.pull-requests .pr-decision--review_required,
+.pull-requests .pr-checks--pending .octicon { color: #9a6700; }
+
+.pull-requests .pr-threads {
+  color: #9a6700;
+  font-weight: 500;
+}
+
+/* Aside: diff stats, state, actions */
+
+.pull-requests .pr-card__aside {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pull-requests .pr-diff {
+  display: inline-flex;
+  gap: 6px;
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.pull-requests .pr-diff__add { color: var(--pr-add); }
+.pull-requests .pr-diff__del { color: var(--pr-del); }
+
+.pull-requests .pr-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 10px;
+  border-radius: 2em;
+  background: var(--pr-color);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.pull-requests .pr-state .octicon {
+  inline-size: 14px;
+  block-size: 14px;
+}
+
+.pull-requests .pr-actions {
+  display: inline-flex;
+  gap: 2px;
+  margin-inline-start: -4px;
+}
+
+.pull-requests a.pr-action {
+  display: grid;
+  place-items: center;
+  inline-size: 28px;
+  block-size: 28px;
+  border-radius: var(--pr-radius);
+  color: var(--pr-muted);
+  transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+.pull-requests a.pr-action:hover,
+.pull-requests a.pr-action:focus-visible {
+  background: var(--pr-subtle-bg);
+  color: var(--pr-text);
+  text-decoration: none;
+}
+
+.pull-requests a.pr-action--unlink:hover,
+.pull-requests a.pr-action--unlink:focus-visible {
+  background: #ffebe9;
+  color: var(--pr-closed-fg);
+}
+
+.pull-requests a.pr-action:focus-visible {
+  outline: 2px solid #0969da;
+  outline-offset: -2px;
+}
+
+/* Link form */
+
+.pull-requests .pr-link-form {
+  display: block;
+  margin: 0 0 12px;
+  padding: 12px;
+  border: 1px solid var(--pr-border);
+  border-radius: var(--pr-radius);
+  background: var(--pr-subtle-bg);
+}
+
+.pull-requests .pr-link-form__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pull-requests .pr-link-form__field {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  block-size: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--pr-border);
+  border-radius: var(--pr-radius);
+  background: #fff;
+  color: var(--pr-muted);
+  cursor: text;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pull-requests .pr-link-form__field:focus-within {
+  border-color: #0969da;
+  box-shadow: inset 0 0 0 1px #0969da;
+}
+
+/* Reset Redmine's input styles, the surrounding label draws the field */
+.pull-requests .pr-link-form__field input[type="text"],
+.pull-requests .pr-link-form__field input[type="text"]:focus {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  block-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--pr-text);
+  font: inherit;
+  box-shadow: none;
+  outline: none;
+}
+
+.pull-requests .pr-link-form__field input::placeholder {
+  color: var(--pr-muted);
+  opacity: 1;
+}
+
+.pull-requests .pr-link-form__hint {
+  margin: 6px 0 0;
+  color: var(--pr-muted);
+  font-size: 0.75rem;
+}
+
+.pull-requests .pr-button,
+.pull-requests input.pr-button[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  block-size: 32px;
+  margin: 0;
+  padding: 0 14px;
+  border: 1px solid var(--pr-border);
+  border-radius: var(--pr-radius);
+  background: #fff;
+  color: var(--pr-text);
+  font: inherit;
+  font-weight: 500;
+  line-height: 30px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.pull-requests a.pr-button:hover {
+  background: var(--pr-subtle-bg);
+  text-decoration: none;
+}
+
+.pull-requests input.pr-button--primary[type="submit"] {
+  border-color: rgba(31, 35, 40, 0.15);
+  background: var(--pr-open);
+  color: #fff;
+}
+
+.pull-requests input.pr-button--primary[type="submit"]:hover {
+  background: #1c8139;
+}
+
+.pull-requests input.pr-button--primary[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.pull-requests .pr-errors {
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  border: 1px solid rgba(209, 36, 47, 0.4);
+  border-radius: var(--pr-radius);
+  background: #ffebe9;
+  color: #82071e;
+}
+
+.pull-requests .pr-errors p {
+  margin: 2px 0;
+}
+
+.pull-requests .pr-empty {
+  margin: 0;
+  color: var(--pr-muted);
+}
+
+/* Header actions: view toggle and link */
+
+.pull-requests .pr-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+}
+
+.pull-requests .pr-repositories-hint {
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  border: 1px dashed var(--pr-border);
+  border-radius: var(--pr-radius);
+  background: var(--pr-subtle-bg);
+  color: var(--pr-muted);
+}
+
+.pull-requests button.pr-view-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--pr-muted);
+  font: inherit;
+  cursor: pointer;
+}
+
+.pull-requests button.pr-view-toggle[hidden] { display: none; }
+.pull-requests button.pr-view-toggle:hover { color: #0969da; }
+.pull-requests .pr-view-toggle .octicon-fold,
+.pull-requests .pr-view-toggle.is-expanded .octicon-unfold { display: none; }
+.pull-requests .pr-view-toggle.is-expanded .octicon-fold { display: inline-block; }
+
+/* Parts only used by the compact list */
+
+.pull-requests .pr-compact-repo,
+.pull-requests .pr-compact-indicators,
+.pull-requests .pr-toggle {
+  display: none;
+}
+
+/* Compact list: one box, one row per pull request, rows expand to the full details */
+
+.pull-requests .pr-list--compact {
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--pr-border);
+  border-radius: var(--pr-radius);
+  background: #fff;
+}
+
+.pull-requests .pr-list--compact .pr {
+  gap: 10px;
+  padding-inline-start: 14px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.pull-requests .pr-list--compact .pr + .pr {
+  border-block-start: 1px solid var(--pr-border);
+}
+
+.pull-requests .pr-list--compact .pr:hover,
+.pull-requests .pr-list--compact .pr.is-expanded {
+  background: var(--pr-subtle-bg);
+}
+
+.pull-requests .pr-list--compact .pr-tile {
+  inline-size: 16px;
+  block-size: 16px;
+  margin-block-start: 14px;
+  background: none;
+  box-shadow: none;
+  color: var(--pr-fg);
+}
+
+.pull-requests .pr-list--compact .pr-card,
+.pull-requests .pr-list--compact .pr:hover .pr-card {
+  padding-block: 8px;
+  padding-inline: 0 8px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.pull-requests .pr-list--compact .pr.is-expanded .pr-card {
+  align-items: flex-start;
+  padding-block-end: 12px;
+}
+
+.pull-requests .pr-list--compact a.pr-title {
+  font-size: 0.875rem;
+  line-height: 20px;
+}
+
+.pull-requests .pr-list--compact .pr-card__title {
+  align-items: center;
+  min-block-size: 28px;
+}
+
+.pull-requests .pr-list--compact .pr-number {
+  font-size: 0.875rem;
+}
+
+.pull-requests .pr-list--compact .pr-compact-repo {
+  display: inline;
+  flex: 0 1 auto;
+  min-inline-size: 0;
+  overflow: hidden;
+  margin-inline-start: 4px;
+  color: var(--pr-muted);
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pull-requests .pr-list--compact .pr-card__body,
+.pull-requests .pr-list--compact .pr:not(.is-expanded) .pr-state {
+  display: none;
+}
+
+.pull-requests .pr-list--compact .pr.is-expanded .pr-card__body {
+  display: block;
+}
+
+.pull-requests .pr-list--compact .pr.is-expanded .pr-compact-repo {
+  display: none;
+}
+
+.pull-requests .pr-list--compact .pr:not(.is-expanded) .pr-compact-indicators {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--pr-muted);
+  font-size: 0.75rem;
+}
+
+/* visually hidden, the text names the checks for screen readers */
+.pull-requests .pr-compact-indicators .pr-detail__text {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.pull-requests .pr-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-variant-numeric: tabular-nums;
+}
+
+.pull-requests .pr-indicator.pr-decision--approved { color: var(--pr-add); }
+.pull-requests .pr-indicator.pr-decision--changes_requested { color: var(--pr-del); }
+.pull-requests .pr-indicator.pr-decision--review_required,
+.pull-requests .pr-indicator--threads { color: #9a6700; }
+
+/* refresh and unlink are available once a row is expanded */
+.pull-requests .pr-list--compact .pr:not(.is-expanded) .pr-actions {
+  display: none;
+}
+
+.pull-requests .pr-list--compact button.pr-toggle {
+  display: grid;
+  place-items: center;
+  inline-size: 28px;
+  block-size: 28px;
+  margin: 0;
+  margin-inline-start: -6px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--pr-radius);
+  background: none;
+  color: var(--pr-muted);
+  cursor: pointer;
+}
+
+.pull-requests .pr-list--compact button.pr-toggle:hover {
+  background: rgba(175, 184, 193, 0.2);
+  color: var(--pr-text);
+}
+
+.pull-requests .pr-list--compact button.pr-toggle:focus-visible {
+  outline: 2px solid #0969da;
+  outline-offset: -2px;
+}
+
+.pull-requests .pr-toggle .octicon {
+  transition: transform 0.15s ease;
+}
+
+.pull-requests .pr.is-expanded .pr-toggle .octicon {
+  transform: rotate(180deg);
+}
+
+/* Small screens (responsive layout) */
+
+@media screen and (max-width: 899px) {
+  .pull-requests .pr-card {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pull-requests .pr-card__aside {
+    inline-size: 100%;
+  }
+
+  .pull-requests .pr-actions {
+    margin-inline-start: auto;
+  }
+
+  .pull-requests .pr-link-form__row {
+    flex-wrap: wrap;
+  }
+}
+
+/* Print: no buttons, every pull request with all details (!important beats
+   the more specific compact list rules) */
+
+@media print {
+  .pull-requests .pr-header__actions,
+  .pull-requests .pr-repositories-hint,
+  .pull-requests .pr-link-form,
+  .pull-requests .pr-actions,
+  .pull-requests .pr-toggle,
+  .pull-requests .pr-compact-repo,
+  .pull-requests .pr-compact-indicators {
+    display: none !important;
+  }
+
+  .pull-requests .pr-list--compact .pr-card__body {
+    display: block !important;
+  }
+
+  .pull-requests .pr-list--compact .pr-state {
+    display: inline-flex !important;
+  }
+
+  .pull-requests .pr-list--compact .pr-card {
+    align-items: flex-start;
+  }
+
+  .pull-requests .pr-list--compact .pr {
+    background: none !important;
+  }
+
+  .pull-requests .pr {
+    break-inside: avoid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pull-requests * {
+    transition: none !important;
+  }
+}

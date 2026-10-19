@@ -1,0 +1,7 @@
+$('#pull-requests').closest('.pull-requests-hook').html('<%= escape_javascript(render(partial: 'pull_requests/panel', locals: { issue: @issue, errors: @errors, show_form: local_assigns[:show_form] })) %>');
+<% if @errors.present? && local_assigns[:show_form] %>
+$('#pull_request_url').focus();
+<% else %>
+// the focused link or button was replaced, move the focus to its counterpart in the new panel
+window.RedminePullRequests && RedminePullRequests.restoreFocus();
+<% end %>

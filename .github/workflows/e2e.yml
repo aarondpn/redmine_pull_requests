@@ -1,0 +1,88 @@
+name: E2E
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+  # the release workflow runs the tests on the tagged commit before publishing
+  workflow_call:
+
+permissions:
+  contents: read
+
+# Superseded pushes to a pull request don't need to finish
+concurrency:
+  group: e2e-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  e2e:
+    name: Redmine ${{ matrix.redmine }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        # latest minor release of each supported major version
+        redmine: ["5.1", "6.1", "7.0"]
+    # docker compose picks the image up from the environment
+    env:
+      REDMINE_IMAGE: redmine:${{ matrix.redmine }}
+    defaults:
+      run:
+        working-directory: e2e
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: e2e/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Run e2e suite
+        run: npm test
+
+      - name: Show container logs
+        if: failure()
+        run: docker compose logs --no-color --tail 300
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: failure()
+        with:
+          name: playwright-report-redmine-${{ matrix.redmine }}
+          path: |
+            e2e/playwright-report
+            e2e/test-results
+          retention-days: 7
+
+  # The suite above bind-mounts the working tree. This job installs a release
+  # archive (git archive, like the release workflow) into a fresh container
+  # following the README, which catches problems like stale assets on
+  # Redmine 6+ that only show up with the archive's file dates.
+  install:
+    name: Install from archive, Redmine ${{ matrix.redmine }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        redmine: ["5.1", "6.1", "7.0"]
+    env:
+      REDMINE_VERSION: ${{ matrix.redmine }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install, check and uninstall the plugin
+        run: e2e/install-test.sh "$REDMINE_VERSION"

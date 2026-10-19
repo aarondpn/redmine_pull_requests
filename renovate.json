@@ -1,0 +1,31 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":semanticCommitTypeAll(chore)",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "labels": ["dependencies"],
+  "osvVulnerabilityAlerts": true,
+  "minimumReleaseAge": "3 days",
+  "schedule": ["before 9am on monday"],
+  "timezone": "Europe/Berlin",
+  "vulnerabilityAlerts": {
+    "description": "Vulnerability fixes ignore the schedule anyway, don't wait for the minimum release age either",
+    "labels": ["dependencies", "security"],
+    "minimumReleaseAge": null
+  },
+  "packageRules": [
+    {
+      "description": "Group E2E test dependencies",
+      "matchFileNames": ["e2e/**"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "e2e dependencies (non-major)"
+    },
+    {
+      "description": "Group GitHub Actions updates",
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions"
+    }
+  ]
+}
