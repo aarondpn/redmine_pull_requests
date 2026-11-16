@@ -3,7 +3,7 @@ name: redmine-pr-e2e
 services:
   redmine:
     # REDMINE_IMAGE=redmine:5.1 for other versions (the default is kept up to date by Renovate)
-    image: ${REDMINE_IMAGE:-redmine:7.0.2}
+    image: ${REDMINE_IMAGE:-redmine:7.0.3}
     # only reachable from this machine: the test users have well-known passwords
     ports:
       - "127.0.0.1:${REDMINE_PORT:-3000}:3000"
